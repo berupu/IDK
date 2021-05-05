@@ -90,11 +90,10 @@
 		A5002F8A263B59FB0048E6E1 /* IDK */ = {
 			isa = PBXGroup;
 			children = (
+				A58E2EFD26430C4200A2B47E /* Massages */,
 				A565E48A263E707E00126B0C /* LogIn */,
 				A5002F8B263B59FB0048E6E1 /* AppDelegate.swift */,
 				A5002F8D263B59FB0048E6E1 /* SceneDelegate.swift */,
-				A5002F8F263B59FB0048E6E1 /* ViewController.swift */,
-				A5002FA3263B5C0B0048E6E1 /* MassageCell.swift */,
 				A5002F99263B59FC0048E6E1 /* Info.plist */,
 				A5002FA6263B60CC0048E6E1 /* Extensions.swift */,
 				A5E95F62263D658B00AEF9C6 /* GoogleService-Info.plist */,
@@ -120,6 +119,15 @@
 				A554E3F3263E9D2500F42AA5 /* SignUpController.swift */,
 			);
 			path = LogIn;
+			sourceTree = "<group>";
+		};
+		A58E2EFD26430C4200A2B47E /* Massages */ = {
+			isa = PBXGroup;
+			children = (
+				A5002FA3263B5C0B0048E6E1 /* MassageCell.swift */,
+				A5002F8F263B59FB0048E6E1 /* ViewController.swift */,
+			);
+			path = Massages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

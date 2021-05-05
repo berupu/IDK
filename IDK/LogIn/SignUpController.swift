@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Firebase
 
-class SignUpController: UIViewController {
+class SignUpController: UIViewController{
     
-    private let userName : UITextField = {
+
+    private let userNameTextField : UITextField = {
        let textField = UITextField()
         textField.placeholder = "Enter your username"
         return textField
@@ -43,20 +45,28 @@ class SignUpController: UIViewController {
     
     private let alreadyHaveAccount: UIButton = {
        let button = UIButton()
-        button.setTitle("Already have account? LogIn", for: .normal)
+        
+        let attributedText = NSMutableAttributedString(string: "Already ave a account?", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.gray])
+        
+        attributedText.append(NSAttributedString(string: " LogIn", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.darkGray]))
+        
+        button.setAttributedTitle(attributedText, for: .normal)
+        
         button.addTarget(self, action: #selector(handlealreadyHaveAccount), for: .touchUpInside)
         button.layer.cornerRadius = 5
-        button.backgroundColor = .gray
         return button
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = true
         signInDesign()
     }
+    
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -64,6 +74,32 @@ class SignUpController: UIViewController {
     
     @objc func handleSignIn(){
         print("sigIn")
+        
+        guard let username = userNameTextField.text, username.count > 0 else {return}
+        guard let email = emailTextField.text, email.count > username.count else {return}
+        guard let password = passwordTextField.text, password.count > 0 else {return}
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            
+            if error != nil {
+                print("failed to create user")
+            }
+            
+            print("succefully created user")
+            
+            let randomNum = NSUUID().uuidString
+            let values = ["userName": username]
+            
+            Database.database().reference().child("Users").child(randomNum).updateChildValues(values) { (err, ref) in
+                
+                if error != nil {
+                    print("failed to save user date")
+                }
+                
+                print("succefully saved user date")
+            }
+        }
+    
     }
     
     @objc func handlealreadyHaveAccount(){
@@ -72,16 +108,17 @@ class SignUpController: UIViewController {
     
     func signInDesign(){
         
-        let stack = UIStackView(arrangedSubviews: [userName,emailTextField,passwordTextField,signInButton])
+        let stack = UIStackView(arrangedSubviews: [userNameTextField,emailTextField,passwordTextField,signInButton])
         stack.axis = .vertical
         stack.spacing = 10
         stack.distribution = .fillEqually
         
         view.addSubview(stack)
-        stack.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 140, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 300, height: 300)
+        stack.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerX: nil, centerY: nil, width: nil, height: nil, topConstant: 140, leadingConstant: 12, trailingConstant: 12, bottomConstant: 0, centerXConstant: 0, centerYConstant: 0, widthConstant: 300, heightConstant: 300)
         
         view.addSubview(alreadyHaveAccount)
-        alreadyHaveAccount.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 102, paddingRight: 12, width: 0, height: 0)
+        alreadyHaveAccount.anchor(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, centerX: nil, centerY: nil, width: nil, height: nil, topConstant: 0, leadingConstant: 12, trailingConstant: 12, bottomConstant: 102, centerXConstant: 0, centerYConstant: 0, widthConstant: 0, heightConstant: 0)
+        
     }
     
     

@@ -28,10 +28,11 @@ class MassageCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: massageCellID)
         
         contentView.addSubview(nameLabel)
-        nameLabel.anchor(top: topAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 300, height: 0)
+        nameLabel.anchor(top: topAnchor, leading: nil, trailing: trailingAnchor, bottom: bottomAnchor, centerX: nil, centerY: nil, width: nil, height: nil, topConstant: 0, leadingConstant: 0, trailingConstant: 0, bottomConstant: 0, centerXConstant: 0, centerYConstant: 0, widthConstant: 300, heightConstant: 0)
         
         contentView.addSubview(profileImage)
-        profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nameLabel.leftAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 2, paddingRight: 0, width: 100, height: 100)
+        profileImage.anchor(top: topAnchor, leading: leadingAnchor, trailing: nameLabel.leadingAnchor, bottom: bottomAnchor, centerX: nil, centerY: nil, width: nil, height: nil, topConstant: 2, leadingConstant: 0, trailingConstant: 0, bottomConstant: 2, centerXConstant: 0, centerYConstant: 0, widthConstant: 100, heightConstant: 100)
+        
         profileImage.layer.cornerRadius = 100/2
         
     }
