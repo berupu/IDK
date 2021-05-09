@@ -98,6 +98,11 @@ class SignUpController: UIViewController{
                 
                 print("succefully saved user date")
             }
+            
+            let viewController = ViewController()
+            let navController = UINavigationController(rootViewController: viewController)
+            navController.modalPresentationStyle = .fullScreen
+            self.present(navController, animated: true, completion: nil)
         }
     
     }
