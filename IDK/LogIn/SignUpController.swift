@@ -8,8 +8,17 @@
 import UIKit
 import Firebase
 
-class SignUpController: UIViewController{
+class SignUpController: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate{
     
+    let profileImage : UIButton = {
+        let pi = UIButton(type: .system)
+        pi.layer.borderWidth = 5
+        pi.layer.borderColor = UIColor.black.cgColor
+        pi.layer.masksToBounds = true
+        pi.contentMode = .scaleAspectFill
+        pi.addTarget(self, action: #selector(handleProfileImge), for: .touchUpInside)
+        return pi
+    }()
 
     private let userNameTextField : UITextField = {
        let textField = UITextField()
@@ -72,9 +81,30 @@ class SignUpController: UIViewController{
         return true
     }
     
+    //MARK: - Selector
+    
+    @objc func handleProfileImge(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+        if let editedImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage").rawValue)] as? UIImage {
+            profileImage.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+            
+        } else if let originalImage = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage").rawValue)] as? UIImage {
+            profileImage.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func handleSignIn(){
         print("sigIn")
-        
         guard let username = userNameTextField.text, username.count > 0 else {return}
         guard let email = emailTextField.text, email.count > username.count else {return}
         guard let password = passwordTextField.text, password.count > 0 else {return}
@@ -113,13 +143,17 @@ class SignUpController: UIViewController{
     
     func signInDesign(){
         
+        view.addSubview(profileImage)
+        profileImage.anchor(top: view.topAnchor, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor, centerY: nil, width: nil, height: nil, topConstant: 50, leadingConstant: 0, trailingConstant: 0, bottomConstant: 0, centerXConstant: 0, centerYConstant: 0, widthConstant: 120, heightConstant: 120)
+        profileImage.layer.cornerRadius = 120/2
+        
         let stack = UIStackView(arrangedSubviews: [userNameTextField,emailTextField,passwordTextField,signInButton])
         stack.axis = .vertical
         stack.spacing = 10
         stack.distribution = .fillEqually
         
         view.addSubview(stack)
-        stack.anchor(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerX: nil, centerY: nil, width: nil, height: nil, topConstant: 140, leadingConstant: 12, trailingConstant: 12, bottomConstant: 0, centerXConstant: 0, centerYConstant: 0, widthConstant: 300, heightConstant: 300)
+        stack.anchor(top: profileImage.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerX: nil, centerY: nil, width: nil, height: nil, topConstant: 80, leadingConstant: 12, trailingConstant: 12, bottomConstant: 0, centerXConstant: 0, centerYConstant: 0, widthConstant: 300, heightConstant: 300)
         
         view.addSubview(alreadyHaveAccount)
         alreadyHaveAccount.anchor(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, centerX: nil, centerY: nil, width: nil, height: nil, topConstant: 0, leadingConstant: 12, trailingConstant: 12, bottomConstant: 102, centerXConstant: 0, centerYConstant: 0, widthConstant: 0, heightConstant: 0)

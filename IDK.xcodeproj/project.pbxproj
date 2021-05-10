@@ -94,10 +94,10 @@
 				A565E48A263E707E00126B0C /* LogIn */,
 				A5002F8B263B59FB0048E6E1 /* AppDelegate.swift */,
 				A5002F8D263B59FB0048E6E1 /* SceneDelegate.swift */,
-				A5002F99263B59FC0048E6E1 /* Info.plist */,
 				A5002FA6263B60CC0048E6E1 /* Extensions.swift */,
 				A5E95F62263D658B00AEF9C6 /* GoogleService-Info.plist */,
 				A5002F94263B59FC0048E6E1 /* Assets.xcassets */,
+				A5002F99263B59FC0048E6E1 /* Info.plist */,
 				A5002FA1263B5B160048E6E1 /* StoryBoard */,
 			);
 			path = IDK;
