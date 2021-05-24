@@ -21,6 +21,7 @@ class ViewController: UITableViewController {
         tableView.register(MassageCell.self, forCellReuseIdentifier: cellID)
         
         setupLogoutButton()
+        addFriendButton()
         
     }
     
@@ -40,9 +41,24 @@ class ViewController: UITableViewController {
         
     }
     
+    func addFriendButton(){
+        let image = UIImage(systemName: "plus")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleFrindList))
+        navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    
     func setupLogoutButton(){
         let image = UIImage(systemName: "lock.open.fill")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+    }
+    
+    //MARK: - Selector
+    
+    @objc func handleFrindList(){
+        let navController = UINavigationController(rootViewController: FrindListController())
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: true, completion: nil)
     }
     
     @objc func handleLogout(){

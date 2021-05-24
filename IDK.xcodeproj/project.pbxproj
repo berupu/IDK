@@ -16,6 +16,8 @@
 		A5002F98263B59FC0048E6E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5002F96263B59FC0048E6E1 /* LaunchScreen.storyboard */; };
 		A5002FA4263B5C0B0048E6E1 /* MassageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5002FA3263B5C0B0048E6E1 /* MassageCell.swift */; };
 		A508DD932656B3740068A93B /* LBTA Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A508DD922656B3740068A93B /* LBTA Layout.swift */; };
+		A543EED3265C1A0600E6F013 /* FrindListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A543EED2265C1A0600E6F013 /* FrindListController.swift */; };
+		A543EED6265C1B8900E6F013 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A543EED5265C1B8900E6F013 /* FriendCell.swift */; };
 		A554E3F4263E9D2500F42AA5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A554E3F3263E9D2500F42AA5 /* SignUpController.swift */; };
 		A565E488263E6F3F00126B0C /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565E487263E6F3F00126B0C /* LogInController.swift */; };
 		A5E95F63263D658B00AEF9C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5E95F62263D658B00AEF9C6 /* GoogleService-Info.plist */; };
@@ -33,6 +35,8 @@
 		A5002F99263B59FC0048E6E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5002FA3263B5C0B0048E6E1 /* MassageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageCell.swift; sourceTree = "<group>"; };
 		A508DD922656B3740068A93B /* LBTA Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LBTA Layout.swift"; sourceTree = "<group>"; };
+		A543EED2265C1A0600E6F013 /* FrindListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrindListController.swift; sourceTree = "<group>"; };
+		A543EED5265C1B8900E6F013 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		A554E3F3263E9D2500F42AA5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		A565E487263E6F3F00126B0C /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		A5E95F62263D658B00AEF9C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		A5002F8A263B59FB0048E6E1 /* IDK */ = {
 			isa = PBXGroup;
 			children = (
+				A543EED1265C19EF00E6F013 /* FrindList */,
 				A58E2EFD26430C4200A2B47E /* Massages */,
 				A565E48A263E707E00126B0C /* LogIn */,
 				A5002F8B263B59FB0048E6E1 /* AppDelegate.swift */,
@@ -110,6 +115,15 @@
 				A5002F91263B59FB0048E6E1 /* Main.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		A543EED1265C19EF00E6F013 /* FrindList */ = {
+			isa = PBXGroup;
+			children = (
+				A543EED2265C1A0600E6F013 /* FrindListController.swift */,
+				A543EED5265C1B8900E6F013 /* FriendCell.swift */,
+			);
+			path = FrindList;
 			sourceTree = "<group>";
 		};
 		A565E48A263E707E00126B0C /* LogIn */ = {
@@ -249,9 +263,11 @@
 				A554E3F4263E9D2500F42AA5 /* SignUpController.swift in Sources */,
 				A5002F90263B59FB0048E6E1 /* ViewController.swift in Sources */,
 				A5002FA4263B5C0B0048E6E1 /* MassageCell.swift in Sources */,
+				A543EED6265C1B8900E6F013 /* FriendCell.swift in Sources */,
 				A508DD932656B3740068A93B /* LBTA Layout.swift in Sources */,
 				A5002F8C263B59FB0048E6E1 /* AppDelegate.swift in Sources */,
 				A5002F8E263B59FB0048E6E1 /* SceneDelegate.swift in Sources */,
+				A543EED3265C1A0600E6F013 /* FrindListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
