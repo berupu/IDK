@@ -8,20 +8,36 @@
 import UIKit
 import Firebase
 
-class ViewController: UITableViewController {
+class ViewController: UIViewController {
 
-     let cellID = "cellID"
+    private let cellID = "cellID"
+    
+    //MARK: - Properties
+    
+    private let tableView = UITableView()
+    
+    private let plusButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .black
+        button.addTarget(self, action: #selector(addFriendButton), for: .touchUpInside)
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLogIn()
-//        navigationItem.title = Auth.auth().currentUser?.uid
-        view.backgroundColor = .black
         
-        tableView.register(MassageCell.self, forCellReuseIdentifier: cellID)
+        setupTableView()
+        tableView.allowsSelection = true
+//        navigationItem.title = Auth.auth().currentUser?.uid
+        
         
         setupLogoutButton()
         addFriendButton()
+        
+        configurePlussButton()
+        
         
     }
     
@@ -41,11 +57,6 @@ class ViewController: UITableViewController {
         
     }
     
-    func addFriendButton(){
-        let image = UIImage(systemName: "plus")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleFrindList))
-        navigationItem.leftBarButtonItem?.tintColor = .black
-    }
     
     func setupLogoutButton(){
         let image = UIImage(systemName: "lock.open.fill")
@@ -54,6 +65,12 @@ class ViewController: UITableViewController {
     }
     
     //MARK: - Selector
+    
+    @objc func addFriendButton(){
+        let image = UIImage(systemName: "plus")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleFrindList))
+        navigationItem.leftBarButtonItem?.tintColor = .black
+    }
     
     @objc func handleFrindList(){
         let navController = UINavigationController(rootViewController: FrindListController())
@@ -85,26 +102,54 @@ class ViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    
+    func setupTableView(){
+        tableView.backgroundColor = .white
+        tableView.register(FriendCell.self, forCellReuseIdentifier: cellID)
+        tableView.tableFooterView = UIView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        view.addSubview(tableView)
+        tableView.frame = view.frame
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        
-        
-        
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    
+    func configurePlussButton(){
+        view.addSubview(plusButton)
+        view.anchor(top: nil, leading: nil, trailing: view.trailingAnchor, bottom: view.bottomAnchor, centerX: nil, centerY: nil, width: nil, height: nil, topConstant: 0, leadingConstant: 0, trailingConstant: 12, bottomConstant: 30, centerXConstant: 0, centerYConstant: 0, widthConstant: 0, heightConstant: 0)
     }
     
-    //swipe delete
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-    }
-
 }
+
+
+    //MARK: - TableView
+
+    extension ViewController:  UITableViewDelegate, UITableViewDataSource {
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           return 12
+       }
+       
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+           
+            cell.textLabel?.text = "cell \(indexPath.row)"
+           
+           return cell
+       }
+
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           return 100
+       }
+       
+       //swipe delete
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           
+       }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            print("Tapped")
+        }
+    }
 
