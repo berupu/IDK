@@ -1,10 +1,13 @@
 # IDK
 Real-Time Firebase Chat App by beRUPU
-❮img src="Images/1.png" width="100" ❯
-❮img src="Images/2.png" width="100" ❯
-❮img src="Images/3.png" width="100" ❯
-❮img src="Images/4.png" width="100" ❯
-❮img src="Images/5.png" width="100" ❯
-❮img src="Images/6.png" width="100" ❯
+
+
+![](Images/1.png)
+![](Images/2.png)
+![](Images/3.png)
+![](Images/4.png)
+![](Images/5.png)
+![](Images/6.png)
+
 
 
