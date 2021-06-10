@@ -2,7 +2,7 @@
 Real-Time Firebase Chat App by beRUPU
 
 
-![](Images/1.png | width=100)
+![](Images/1.png =250x250)
 ![](Images/2.png)
 ![](Images/3.png)
 ![](Images/4.png)
