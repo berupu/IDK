@@ -6,6 +6,7 @@ Sender Screen:
 
 
 Reciever Screen:
+![alt-text](https://github.com/berupu/IDK/blob/main/IDK2.gif)
 
 
 ![](Images/1.png=80x80)
