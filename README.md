@@ -9,7 +9,7 @@ Reciever Screen:
 ![alt-text](https://github.com/berupu/IDK/blob/main/IDK2.gif)
 
 
-![](Images/1.png=80x80)
+![](Images/1.png=60x60)
 ![](Images/2.png)
 ![](Images/3.png)
 ![](Images/4.png)
