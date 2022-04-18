@@ -2,11 +2,12 @@
 Real-Time Firebase Chat App by beRUPU
 
 Sender Screen:
-![alt-text](https://github.com/berupu/IDK/blob/main/IDK.gif)
+
+<img src="https://github.com/berupu/IDK/blob/main/IDK.gif" width="200" />
 
 
 Reciever Screen:
-![alt-text](https://github.com/berupu/IDK/blob/main/IDK2.gif)width="400" height="790">
+![alt-text](https://github.com/berupu/IDK/blob/main/IDK2.gif)
 
 
 ![](Images/1.png=20x20)
